@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Farmer Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header>
+  <h2>🌿 Plant Health Monitor</h2>
+  <nav>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/upload">Upload</a>
+    <a href="/report">Reports</a>
+    <a href="/validation">Validation</a>
+    <a href="/logout">Logout</a>
+  </nav>
+</header>
+
+<div class="dashboard-section">
+
+  <div class="dashboard-header">
+    <h1>Welcome Farmer</h1>
+    <p>Monitor plant health and get smart soil remediation recommendations.</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+
+    <div class="stat-box">
+      <h2>{{ total_analysis }}</h2>
+      <p>Total Analysis</p>
+    </div>
+
+    <div class="stat-box">
+      <h2>{{ healthy }}</h2>
+      <p>Healthy Plants</p>
+    </div>
+
+    <div class="stat-box">
+      <h2>{{ deficiencies }}</h2>
+      <p>Deficiencies Detected</p>
+    </div>
+
+    <!-- Weather Info -->
+    <div class="stat-box">
+      <h2>{{ temperature }} °C</h2>
+      <p>Current Temperature in {{ city }}</p>
+    </div>
+
+    <div class="stat-box">
+      <h2>{{ condition }}</h2>
+      <p>Weather Condition</p>
+    </div>
+
+  </div>
+
+  <!-- ACTION CARDS -->
+  <div class="actions">
+
+    <div class="action-card">
+      <h3>🌿 Upload Plant Image</h3>
+      <p>Upload plant leaf image to detect nutrient deficiency.</p>
+      <a href="/upload" class="action-btn">Analyze</a>
+    </div>
+
+    <div class="action-card">
+      <h3>📄 View Reports</h3>
+      <p>Check previous plant health reports and recommendations.</p>
+      <a href="/report" class="action-btn">View</a>
+    </div>
+
+    <div class="action-card">
+      <h3>✔ Validation</h3>
+      <p>Provide feedback about recommended treatment results.</p>
+      <a href="/validation" class="action-btn">Validate</a>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

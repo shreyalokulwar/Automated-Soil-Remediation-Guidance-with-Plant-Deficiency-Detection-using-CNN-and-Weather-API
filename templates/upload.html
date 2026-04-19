@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Upload Plant Image</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="upload-section">
+
+<div class="upload-card">
+
+<h2>🌿 Upload Plant Image</h2>
+
+<p>Upload a clear leaf image to detect nutrient deficiency</p>
+
+<form action="/predict" method="POST" enctype="multipart/form-data">
+
+<input type="file" name="image" required onchange="previewImage(event)">
+
+<button class="upload-btn">Analyze Plant</button>
+
+</form>
+
+<div class="preview">
+<img id="preview">
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function previewImage(event){
+
+const reader = new FileReader();
+
+reader.onload = function(){
+document.getElementById('preview').src = reader.result;
+}
+
+reader.readAsDataURL(event.target.files[0]);
+
+}
+
+</script>
+
+</body>
+</html>

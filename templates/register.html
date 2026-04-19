@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Farmer Register</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="form-page">
+
+<div class="form-card">
+
+<h2>Farmer Registration</h2>
+
+<form method="POST">
+
+<input type="text" name="name" placeholder="Full Name" required>
+
+<input type="email" name="email" placeholder="Email Address" required>
+
+<input type="password" name="password" placeholder="Password" required>
+
+<input type="text" name="mobile" placeholder="Mobile Number" required>
+
+<input type="text" name="location" placeholder="Location" required>
+
+<button type="submit">Register</button>
+
+</form>
+
+<p style="margin-top:15px;">
+Already have an account?
+<a href="/login">Login</a>
+</p>
+
+</div>
+
+</div>
+
+</body>
+</html>

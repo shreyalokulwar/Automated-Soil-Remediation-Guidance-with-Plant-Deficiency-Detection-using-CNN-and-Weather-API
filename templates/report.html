@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Plant Health Report</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<header>
+<h2>🌿 Plant Health Monitor</h2>
+
+<nav>
+<a href="/">Home</a>
+<a href="/dashboard">Dashboard</a>
+<a href="/upload">Upload</a>
+<a href="/report">Reports</a>
+<a href="/validation">Validation</a>
+<a href="/logout">Logout</a>
+</nav>
+</header>
+
+
+<div class="report-container">
+
+<h1>Plant Health Analysis Report</h1>
+
+<div class="report-card">
+
+<!-- IMAGE -->
+
+<div class="report-image">
+<img src="{{ image }}" alt="Plant Image">
+</div>
+
+
+<!-- DETAILS -->
+
+<div class="report-details">
+
+<h3>Prediction Result</h3>
+
+<div class="prediction-box">
+{{ prediction }}
+</div>
+
+
+<h3>Recommendation</h3>
+
+<div class="recommendation-box">
+{{ recommendation }}
+</div>
+
+
+<div class="report-buttons">
+
+<a href="/dashboard" class="btn-green">
+Dashboard
+</a>
+
+<a href="/validation" class="btn-orange">
+Validation
+</a>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

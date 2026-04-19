@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Result</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🌿 Analysis Result</div>
+</header>
+
+<div class="analysis-container">
+
+    <!-- LEFT SIDE IMAGE -->
+    <div class="analysis-image">
+        <img src="{{ image }}" alt="Plant Image">
+    </div>
+
+    <!-- RIGHT SIDE RESULT -->
+    <div class="analysis-info">
+
+        <!-- STATUS -->
+        <div class="status-box">
+            <h3>Plant Health Status</h3>
+            <p>{{ prediction }}</p>
+        </div>
+
+        <!-- WEATHER / ENVIRONMENT -->
+        <div class="env-box">
+            <h3>Environmental Conditions</h3>
+
+            {% if temp is defined and humidity is defined %}
+                <p><strong>Temperature:</strong> {{ temp }} °C</p>
+                <p><strong>Humidity:</strong> {{ humidity }} %</p>
+
+                <!-- WARNINGS -->
+                {% if humidity < 40 %}
+                    <p style="color:red;">⚠ Low Humidity Detected</p>
+                {% endif %}
+
+                {% if temp < 20 %}
+                    <p style="color:orange;">⚠ Low Temperature Detected</p>
+                {% endif %}
+
+            {% else %}
+                <p>Weather data not available</p>
+            {% endif %}
+        </div>
+
+        <!-- ISSUE -->
+        <div class="issue-box">
+            <h3>Detected Issues</h3>
+            <ul>
+                <li>{{ prediction }} Deficiency</li>
+
+                {% if temp is defined and humidity is defined %}
+
+                    {% if prediction == "Nitrogen" and humidity < 40 %}
+                        <li>Low humidity may reduce nitrogen absorption.</li>
+
+                    {% elif prediction == "Nitrogen" %}
+                        <li>Nitrogen deficiency detected in plant.</li>
+
+                    {% elif prediction == "Phosphorus" and temp < 20 %}
+                        <li>Low temperature slows phosphorus uptake.</li>
+
+                    {% elif prediction == "Phosphorus" %}
+                        <li>Phosphorus deficiency detected.</li>
+
+                    {% elif prediction == "Potassium" %}
+                        <li>Potassium deficiency detected.</li>
+
+                    {% else %}
+                        <li>No major issues detected. Plant is healthy 🌿</li>
+                    {% endif %}
+
+                {% else %}
+                    <li>Environmental data unavailable for detailed analysis.</li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <!-- RECOMMENDATION -->
+        <div class="recommend-box">
+            <h3>Soil Recommendation</h3>
+            <p>{{ recommendation }}</p>
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="analysis-buttons">
+            <a href="/report" class="report-btn">Generate Report</a>
+            <a href="/validation" class="validation-btn">Validation</a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
